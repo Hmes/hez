@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Hermes GIT</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Telecomunicaciones</h1>
+        <h2>Cómo obtener la dirección red, broadcast, 1º host y último host.</h2>
+
+        <section id="maths">
+          <a href="http://hmes.github.io/hez" class="btn">Home</a>
+          <a href="http://hmes.github.io/hez/algebra-lineal" class="btn btn-github">
+            <span class="icon">
+            </span>Álgebra lineal</a>
+          <a href="http://hmes.github.io/hez/calculo" class="btn btn-github">
+            <span class="icon">
+            </span>Cálculo</a>
+        </section>
+        
+      </div>
+    </header>
+    <div class="container">
+        <section id="algebra">
+<img src="http://campusdematematicas.com/wp-content/uploads/2012/06/sistema-cartesiano-xyz.gif" alt="Grafica 3D" style="width:260px;height:265px;">
+        </section>
+    </div>
+
+    <div class="container">
+      <section id="main_content">
+        <h2>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apuntes álgebra lineal.</h2>
+
+<p>Sacar direccion de red | Broadcast
+<br><br>Nos dan la siguiente dirección IP, con su correspondiente máscara de subred.
+<br>192.160.26.109/20
+ <br>1º PASO
+<br>La máscara de red es / 20,  con lo que tendremos que saber cuántos bits utiliza para hosts.  Entonces sabiendo que la dirección IP tiene un total de 32 bits, haremos una resta:
+<br>32 – 20 = 12,  12 serán los bits que utiliza para hosts.
+<br><br>2º PASO
+<br>Tenemos que pasar a binario la IP que nos han dado para poder saber hasta donde tenemos los bits que corresponden  a red y hasta dónde los bits que corresponden a los hosts.
+<br>1º octeto             2º octeto           3º octeto          4º octeto
+<br>192                       160                          26                  109
+<br>11000000        10100000        00011010        01101101
+<br><br>Cogeremos 12 bits de derecha a izquierda, que serán todos del 4º octeto + 4 bits del 3º octeto.
+<br>- Para saber la dirección de red,  pondremos los 12 bits de hosts a cero.
+<br>- Para saber la dirección del 1º host disponible será la siguiente dirección ip a partir de      la de red.
+<br>- Para saber la dirección de broadcast pondremos los 12 bits de host a uno.
+<br>- La dirección  del último host disponible será la anterior a la de broadcast.
+<br><br>11000000        10100000        00011010       01101101  IP DADA
+<br>11000000        10100000        00010000       0000000   RED
+<br>11000000        10100000        00010000       00000001   1º HOST
+<br>11000000        10100000        00011111       11111110   ÚLTIMO HOST
+<br>11000000        10100000        00011111       11111111   BROADCAST
+<br><br>3º PASO
+<br>Pasar a decimal las direcciones que acabamos de transformar:
+<br>192             160             16              0
+<br>11000000        10100000        00010000        00000000
+<br>192             160             16              1
+<br>11000000        10100000        00010000        00000001
+<br>192             160             31              254
+<br>11000000        10100000        00011111        11111110
+<br>192             160             31              255
+<br>11000000        10100000        00011111        11111111. 
+<br><br>
+Salu2.</p>
+      </section>
+    </div>
+
+  </body>
+</html>
